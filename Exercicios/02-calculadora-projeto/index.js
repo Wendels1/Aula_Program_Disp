@@ -13,6 +13,6 @@ function calcularIdade(anoNascimento) {
     const idade = anoAtual - anoNascimento;
     return idade;
 }
-const anoNascimento = 2003;
+const anoNascimento = 1990;
 const idade = calcularIdade(anoNascimento);
 console.log(idade);
