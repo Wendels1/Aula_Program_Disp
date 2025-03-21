@@ -1,22 +1,27 @@
 import React from "react";
 import { StatusBar } from "expo-status-bar";
 import {
-Button,
-Image,
-StyleSheet,
-Text,
-View,
-ScrollView,
+  Button,
+  Image,
+  StyleSheet,
+  Text,
+  View,
+  ScrollView,
 } from "react-native";
 
 export default function App() {
+  function alerta() {
+    alert('Clicou no Botão!!!')
+  }
+
+
   return (
     <ScrollView>
       <View style={styles.container}>
         <Text style={styles.title}>Corinthians</Text>
-        <Image 
+        <Image
           source={{
-            uri: 'https://images-americanas.b2w.io/produtos/35017235/imagens/adesivo-licenciado-corinthians-emblema-oficial-2018/35017234_1_large.jpg' 
+            uri: 'https://images-americanas.b2w.io/produtos/35017235/imagens/adesivo-licenciado-corinthians-emblema-oficial-2018/35017234_1_large.jpg'
 
           }}
           style={{
@@ -35,9 +40,9 @@ export default function App() {
             height: 100,
             width: 100,
           }}
-          />
+        />
         <Text>7 Vezes camepão Brasileiro</Text>
-         <Image
+        <Image
           source={{
             uri: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT9Zkm2O87dMWiGuRQ6m81YqJpq8IdqeARHng&s'
 
@@ -46,7 +51,7 @@ export default function App() {
             height: 100,
             width: 100,
           }}
-          />
+        />
         <Text>30 titulos paulistas</Text>
         <Image
           source={{
@@ -56,7 +61,7 @@ export default function App() {
             height: 100,
             width: 100,
           }}
-          />
+        />
         <Text>1 Libertadores</Text>
         <Image
           source={{
@@ -66,9 +71,9 @@ export default function App() {
             height: 100,
             width: 100,
           }}
-          />
-          <Button onPress={() => alert('Vai Corinthians')} title="GOL" />
-        
+        />
+        <Button onPress={() => alert('Vai Corinthians')} title="GOL" />
+
         <StatusBar style="auto" />
       </View>
     </ScrollView>
