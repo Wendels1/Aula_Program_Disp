@@ -8,7 +8,7 @@ export default function Filme(props) {
       <Text style={styles.texto}>Título: {props.nome}</Text>
       <Text style={styles.texto}>Ano: {props.ano}</Text>
       <Text style={styles.texto}>Diretor: {props.diretor}</Text>
-      <Text style={styles.texto}>Gênero: {props.genero}</Text>
+      <Text style={styles.texto}>Gênero: {props.tipo}</Text>
       <Text style={styles.texto}>Capa: </Text>
       <Image source={{ uri: props.capa }} style={{ height: 200, width: 200 }} />
     </View>
