@@ -60,6 +60,19 @@ export default function App() {
           )}
         />
 
+        <FlatList
+          data={listaCards}
+          renderItem={({ item }) => (
+            <Card style={{ marginBottom: 10 }}>
+              <Card.Content>
+                <Title>{item.titulo}</Title>
+                <Paragraph>{item.descricao}</Paragraph>
+              </Card.Content>
+              <Card.Cover source={{ uri: item.imagem }} />
+            </Card>
+          )}
+        />
+        
       </View>
     </PaperProvider>
   );
