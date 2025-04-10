@@ -1,10 +1,10 @@
 import { StyleSheet, Text, View } from 'react-native'
 import React from 'react'
 
-export default function SetScreen() {
+export default function SettingsScreen() {
   return (
     <View>
-      <Text>SetScreen</Text>
+      <Text>SettingsScreen</Text>
     </View>
   )
 }

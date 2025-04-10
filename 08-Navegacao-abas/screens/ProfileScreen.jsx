@@ -3,15 +3,10 @@ import React from 'react'
 
 export default function ProfileScreen() {
   return (
-    <View style={styles.container}>
+    <View>
       <Text>ProfileScreen</Text>
     </View>
   )
 }
 
-const styles = StyleSheet.create({
-    container: {
-      justifyContent: 'center',
-      alignItems: 'center',
-    },
-})
+const styles = StyleSheet.create({})
