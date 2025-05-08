@@ -51,10 +51,6 @@ const JogadoresScreen = () => {
   );
 };
 
-const styles = StyleSheet.create({
-  container: {
-    padding: 10
-  }
-});
+const styles = StyleSheet.create({});
 
 export default JogadoresScreen;
