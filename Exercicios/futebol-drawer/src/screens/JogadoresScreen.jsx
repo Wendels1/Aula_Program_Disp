@@ -1,8 +1,7 @@
-import React from 'react';
 import { FlatList, StyleSheet } from 'react-native';
 import JogadoresListaItem  from '../componentes/JogadoresListaItem'
 
-const JogadoresScreen = () => {
+export default function JogadoresScreen ()  {
   const jogadores = [
     {
       nome: "Gabriel Barbosa",
@@ -52,5 +51,3 @@ const JogadoresScreen = () => {
 };
 
 const styles = StyleSheet.create({});
-
-export default JogadoresScreen;

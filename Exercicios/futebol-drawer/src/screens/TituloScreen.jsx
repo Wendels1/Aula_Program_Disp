@@ -1,8 +1,7 @@
-import React from 'react';
 import { FlatList, StyleSheet } from 'react-native';
 import TitulosLista from '../componentes/TitulosLista';
 
-const TitulosScreen = () => {
+export default function TitulosScreen  ()  {
   const titulos = [
     {
       nome: "Campeonato Brasileiro",
@@ -33,5 +32,3 @@ const TitulosScreen = () => {
 };
 
 const styles = StyleSheet.create({});
-
-export default TitulosScreen;

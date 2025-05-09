@@ -1,20 +1,31 @@
-import React from 'react';
-import { Image } from 'react-native';
-import { List } from 'react-native-paper';
+import { StyleSheet } from 'react-native';
+import { Card, Text, Avatar } from 'react-native-paper';
 
-const JogadoresListaItem = ({ jogador }) => {
+export default function JogadoresListaItem  ({jogador}) {
+
   return (
-    <List.Item
-      title={jogador.nome}
-      description={`Nº ${jogador.numero} - ${jogador.posicao}`}
-      left={() => (
-        <Image
-          source={{ uri: jogador.imagem }}
-          style={{ width: 50, height: 50, borderRadius: 25, marginRight: 10 }}
-        />
-      )}
-    />
+    <Card style={styles.card} mode="contained">
+      <Card.Title
+        title={<Text variant="titleMedium">{jogador.nome}</Text>}
+        subtitle={`Nº ${jogador.numero} - ${jogador.posicao}`}
+        left={() => (
+          <Avatar.Image 
+            size={46} 
+            source={{ uri: jogador.imagem }} 
+            style={styles.avatar}
+          />
+        )}
+        right={() => <Text variant="bodyMedium">{jogador.idade} anos</Text>}
+      />
+    </Card>
   );
 };
-
-export default JogadoresListaItem;
+const styles = StyleSheet.create({
+  card: {
+    marginVertical: 4,
+    marginHorizontal: 8,
+  },
+  avatar: {
+    backgroundColor: 'transparent',
+  },
+});

@@ -1,14 +1,27 @@
-import React from 'react';
-import { List } from 'react-native-paper';
+import { StyleSheet } from 'react-native';
+import { Card, Text } from 'react-native-paper';
 
-const TitulosLista = ({ titulo }) => {
+export default function TitulosLista  ({ titulo }) {
   return (
-    <List.Item
-      title={titulo.nome}
-      description={`Conquistado em: ${titulo.anos.join(', ')}`}
-      left={() => <List.Icon icon="trophy" />}
-    />
+    <Card style={styles.card} mode="contained">
+      <Card.Content>
+        <Text variant="titleMedium" style={styles.title}>
+          {titulo.nome}
+        </Text>
+        <Text variant="bodyMedium">
+          Conquistado em: {titulo.anos.join(', ')}
+        </Text>
+      </Card.Content>
+    </Card>
   );
 };
 
-export default TitulosLista;
+const styles = StyleSheet.create({
+  card: {
+    marginVertical: 4,
+    marginHorizontal: 8,
+  },
+  title: {
+    marginBottom: 4,
+  },
+});

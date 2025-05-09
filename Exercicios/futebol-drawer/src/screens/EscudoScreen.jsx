@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, Image, StyleSheet } from 'react-native';
 
-const EscudoScreen = () => {
+export default function EscudoScreen  () {
   const time = {
     escudo: "https://i.pinimg.com/236x/16/db/d2/16dbd20fd582e025dc54cc3fbd1839c9.jpg"
   };
@@ -29,5 +29,3 @@ const styles = StyleSheet.create({
     height: 300,
   },
 });
-
-export default EscudoScreen;

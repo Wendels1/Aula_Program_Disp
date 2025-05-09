@@ -10,7 +10,7 @@ import { createDrawerNavigator } from '@react-navigation/drawer';
 
 const Drawer = createDrawerNavigator();
 
-const DrawerRoutes = () => {
+export default function DrawerRoutes  () {
   return (
     <Drawer.Navigator
       screenOptions={{
@@ -51,5 +51,3 @@ const DrawerRoutes = () => {
     </Drawer.Navigator>
   );
 };
-
-export default DrawerRoutes;
