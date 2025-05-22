@@ -1,9 +1,9 @@
 import { FlatList, StyleSheet, View } from 'react-native'
-import { Card, Text, Avatar, IconButton, ActivityIndicator } from 'react-native-paper'
+import { ActivityIndicator, Avatar, Card, IconButton, Text, MD2Colors   } from 'react-native-paper'
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 
-export default function HomeScreens() {
+export default function HomeScreens({navigation, route}) {
 
   // Cria um estado para armazenar os dados da API
   const [usuarios, SetUsuarios] = useState([])
@@ -28,7 +28,10 @@ export default function HomeScreens() {
       <FlatList 
         data={usuarios}
         renderItem={({ item }) => (
-          <Card style={{ margin: 10 }}>
+          <Card 
+            style={{ margin: 10 }}
+            onPress={() => navigation.navigate('UsuarioScreen',  item.id )} // Navega para a tela de detalhes passando o item
+          >
             <Card.Title 
               title={item.firstName + ' ' + item.lastName}
               subtitle={item.email}
@@ -40,7 +43,7 @@ export default function HomeScreens() {
         )}
         ListEmptyComponent={() => (
           <View style={styles.loadingContainer}>
-            <ActivityIndicator  size={50} color={'#000'} />
+            <ActivityIndicator animating={true} color={MD2Colors.red800} size={80} />
 
             <Text  variant='titleLarge' style={{ fontSize: 20, color: '#000' }}>Aguarde...</Text>
           </View>
