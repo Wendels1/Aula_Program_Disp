@@ -16,7 +16,9 @@ export default function ProdutoScreen({ route }) {
         console.log(resposta.data);
         setProduto(resposta.data)
       })
-      .catch(err => console.error(err));
+      .catch(erro => {
+        alert('Erro ao carregar os dados')
+      })
   }, [id]);
 
   return (
