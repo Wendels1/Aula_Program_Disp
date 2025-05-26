@@ -19,7 +19,15 @@ export default function StackRoutes() {
         component={HomeScreens}
         options={{ 
             title: 'Lista de Produtos', 
-            headerTitleAlign: 'center' 
+            headerTitleAlign: 'center', 
+            headerStyle: {
+              backgroundColor: '#1E1E1E',
+            },
+            headerTintColor: '#FFFFFF',
+            headerTitleStyle: {
+              fontWeight: 'bold',
+              fontSize: 20,
+            },
         }} 
       />
 
@@ -28,7 +36,15 @@ export default function StackRoutes() {
         component={ListaProdutosScreen} 
         options={{
             title: 'Detalhes do Produto', 
-            headerTitleAlign: 'center'
+            headerTitleAlign: 'center',
+            headerStyle: {
+              backgroundColor: '#1E1E1E',
+            },
+            headerTintColor: '#FFFFFF',
+            headerTitleStyle: {
+              fontWeight: 'bold',
+              fontSize: 20,
+            },
         }}
       />
 
@@ -38,6 +54,14 @@ export default function StackRoutes() {
         options={{
             title: 'Detalhes do Produto', 
             headerTitleAlign: 'center'
+            , headerStyle: {
+              backgroundColor: '#1E1E1E',
+            },
+            headerTintColor: '#FFFFFF',
+            headerTitleStyle: {
+              fontWeight: 'bold',
+              fontSize: 20,
+            },
         }}
       />
 

@@ -35,7 +35,7 @@ export default function HomeScreen({navigation, route}) {
             onPress={() => navigation.navigate('ListaProdutosScreen', { categoria: item })}
           >
             <Card.Title 
-              title={item} // item é a categoria
+              title={item}
               left={(props) => <Avatar.Icon {...props} icon="folder" />}
               right={(props) => <IconButton icon='chevron-right' size={30} />}
             />
