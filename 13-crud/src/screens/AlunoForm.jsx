@@ -2,134 +2,154 @@ import { StyleSheet, View } from 'react-native'
 import React, { useState } from 'react'
 import { Text, Button, TextInput } from 'react-native-paper'
 import { TextInputMask } from 'react-native-masked-text'
+import AlunoService from '../alunos/AlunoService'
 
 export default function AlunoForm({ navigation, route }) {
 
-    const [nome, setNome] = useState('')
-    const [cpf, setCpf] = useState('')
-    const [email, setEmail] = useState('')
-    const [telefone, setTelefone] = useState('')
-    const [dataNascimento, setDataNascimento] = useState('')
-
-    function salvar() {
-        const aluno = {
-          nome,
-          cpf,
-          email,
-          telefone,
-          dataNascimento
-        }
-    
-        if (!aluno.nome || !aluno.cpf || !aluno.email || !aluno.telefone || !aluno.dataNascimento) {
-          alert('Preencha todos os campos!!!')
-        } else {
-          alert(JSON.stringify(aluno))
-        }
-    
+    const alunoAntigo = route.params || {}
+  
+    const [nome, setNome] = useState(alunoAntigo.nome || '')
+    const [cpf, setCpf] = useState(alunoAntigo.cpf || '')
+    const [email, setEmail] = useState(alunoAntigo.email || '')
+    const [telefone, setTelefone] = useState(alunoAntigo.telefone || '')
+    const [dataNascimento, setDataNascimento] = useState(alunoAntigo.dataNascimento || '')
+  
+  
+    async function salvar() {
+      const aluno = {
+        nome,
+        cpf,
+        email,
+        telefone,
+        dataNascimento
       }
-
-  return (
-    <View>
-      <Text variant='headlineLarge' style={{ textAlign: 'center', margin: 10 }}>Informe os Dados</Text>
-
+  
+      if (!aluno.nome || !aluno.cpf || !aluno.email || !aluno.telefone || !aluno.dataNascimento) {
+        alert('Preencha todos os campos!!!')
+        return
+      }
+  
+  
+      if (alunoAntigo.id) {
+        // Atualizar um aluno
+        aluno.id = alunoAntigo.id
+        await AlunoService.atualizar(aluno)
+        alert('Aluno atualizado com sucesso!')
+        navigation.reset({
+          index: 0,
+          routes: [{ name: "AlunoLista" }]
+        })
+      } else {
+        // criando um aluno novo
+        await AlunoService.salvar(aluno)
+        alert('Aluno criado com sucesso!')
+        navigation.reset({
+          index: 0,
+          routes: [{ name: "AlunoLista" }]
+        })
+      }
+  
+  
+    }
+  
+    return (
+      <View style={styles.container}>
+        <Text variant='titleLarge' style={{ marginTop: 10 }}>Informe os dados:</Text>
+        <Text variant='titleLarge' style={{ marginTop: 10 }}>Aluno ID: {alunoAntigo.id || 'NOVO'}</Text>
+  
         <TextInput
-            label='Nome'
-            mode='outlined'
-            style={styles.input}
-            placeholder='Informe o Nome'
-            value={nome}
-            onChange={setNome}
+          label='Nome'
+          style={styles.input}
+          mode='outlined'
+          value={nome}
+          onChangeText={setNome}
         />
-
+  
         <TextInput
-            label='CPF'
-            mode='outlined'
-            style={styles.input}
-            placeholder='Informe o CPF'
-            value={cpf}
-            onChange={setNome}
-            keyboardType='numeric'
-            render={(props) => (
-                <TextInputMask
-                    {...props}
-                    type={'cpf'}
-                    options={{
-                        format: '999.999.999-99'
-                    }}
-                />
-            )}
+          label='CPF'
+          style={styles.input}
+          mode='outlined'
+          value={cpf}
+          onChangeText={setCpf}
+          keyboardType='numeric'
+          render={(props) => (
+            <TextInputMask
+              {...props}
+              type={'cpf'}
+            />
+          )}
         />
-
+  
         <TextInput
-            label='E-mail'
-            style={styles.input}
-            mode='outlined'
-            value={email}
-            onChangeText={setEmail}
-            keyboardType='email-address'
+          label='E-mail'
+          style={styles.input}
+          mode='outlined'
+          value={email}
+          onChangeText={setEmail}
+          keyboardType='email-address'
         />
-        
+  
         <TextInput
-            label='Telefone'
-            mode='outlined'
-            style={styles.input}
-            placeholder='Informe o Telefone'
-            value={telefone}
-            onChange={setNome}
-            render={(props) => (
-                <TextInputMask
-                    {...props}
-                    type={'cel-phone'}
-                    options={{
-                        maskType: 'BRL',
-                        withDDD: true,
-                        dddMask: '(99) 9999-9999 '
-                    }}
-                />
-            )}
+          label='Telefone'
+          style={styles.input}
+          mode='outlined'
+          value={telefone}
+          onChangeText={setTelefone}
+          keyboardType='numeric'
+          placeholder='(61)90000-0001'
+          render={(props) => (
+            <TextInputMask
+              {...props}
+              type={'cel-phone'}
+              options={{
+                maskType: 'BRL',
+                withDDD: true,
+                dddMask: '(99) '
+              }}
+            />
+          )}
         />
-
+  
         <TextInput
-            label='Data de Nascimento'
-            mode='outlined'
-            style={styles.input}
-            placeholder='Informe a Data de Nascimento'
-            value={dataNascimento}
-            onChange={setNome}
-            keyboardType='numeric'
-            render={(props) => (
-                <TextInputMask
-                    {...props}
-                    type={'datetime'}
-                    options={{
-                        mask: 'DD/MM/YYYY'
-                    }}
-                />
-            )}
+          label='Data de Nascimento'
+          style={styles.input}
+          mode='outlined'
+          value={dataNascimento}
+          onChangeText={setDataNascimento}
+          keyboardType='numeric'
+          placeholder='01/01/2000'
+          render={(props) => (
+            <TextInputMask
+              {...props}
+              type={'datetime'}
+              options={{
+                format: 'DD/MM/YYYY'
+              }}
+            />
+          )}
         />
-
-
+  
         <Button
-            mode='contained'
-            icon='content-save'
-            style={{ margin: 10 }}
-            onPress={salvar}
+          style={styles.input}
+          mode='contained'
+          icon='plus'
+          onPress={salvar}
         >
-            Salvar
+          Salvar
         </Button>
-    </View>
-  )
-}
-
-const styles = StyleSheet.create({
+  
+  
+      </View>
+    )
+  }
+  
+  const styles = StyleSheet.create({
     container: {
-        flex: 1,
-        padding: 10,
-        alignItems: 'center',
+      flex: 1,
+      alignItems: 'center'
     },
     input: {
-        marginBottom: 10,
-        width: '90%',
-        marginTop: 10,
+      width: '90%',
+      marginTop: 10
     }
-})
+  })
